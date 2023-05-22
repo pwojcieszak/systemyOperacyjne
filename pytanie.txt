@@ -1,0 +1,2 @@
+-Ile procesów powstanie przy n-krotnym wywolaniu funkcji fork-exec jak wyżej i dlaczego?
+-Powstanie n procesow poniewaz kazdy z nowo powstalych procesow wywola funkcje i skonczy swoje istnienie wraz z koncem programu wskazanego w execlp.
