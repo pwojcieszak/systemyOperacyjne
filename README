@@ -1,0 +1,64 @@
+========================================================================
+Autor: Piotr Wojcieszak                              Krakow, 20.04.2022
+========================================================================
+
+* Zawartosc:
+============
+
+Katalog programy zawiera jeden program w jezyku C:
+--------------------------------------------------------------------
+
+I.  Tworzy potok FIFO z poziomu programu, a nastepnie uruchomia procesy 
+    Producenta i Konsumenta w tym samym programie (w dwoch procesach
+    potomnymnych). Potok usuwa w funkcji zarejestrowanej przez atexit.
+    Program sklada sie z pieciu modulow:
+    1) a.c           - program glowny,
+    2) dane.txt      - przykladowy plik zawierajacy dane dla programu,
+    3) wynik.txt     - przykladowy plik odbierajacy dane od programu,
+    4) producent.c   - program producenta (pobiera dane z pliku z danymi
+                       i przekazuje do potoku),
+    5) konsument.c   - program konsumenta (pobiera dane z potoku i 
+                       przekazuje do pliku z wynikami).
+II. Tworzy potok FIFO z linii komend oraz uruchomienia procesy Producenta
+    i Konsumenta niezaleznie z poziomu powloki (w roznych terminalach). Na
+    koncu usuwa potok.
+------------------------------------------------------------------------
+
+* Jak uruchomic programy:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> Aby uruchomic program I nalezy wykonac komende:
+       make run3 PLIK1=<PLIK1> PLIK2=<PLIK2> POTOK=<POTOK> DANE=<DANE> WYNIK=<WYNIK>
+    Pole <PLIK1> sluzy do przekazania nazwy (sciezki) programu pelniacego role producenta.
+    Pole <PLIK2> sluzy do przekazania nazwy (sciezki) programu pelniacego role konsumenta.
+    Pole <POTOK> sluzy do przekazania nazwy potoku, ktory zostanie utworzony.
+    Pole <DANE> sluzy do przekazania nazwy (sciezki) pliku, z ktorego beda pobierane
+    dane.
+    Pole <WYNIK> sluzy do przekazania nazwy (sciezki) pliku, do ktorego beda 
+    zapisywane dane.
+    np. make run3 PLIK1=./producent.x PLIK2=./konsument.x POTOK=./potokA 
+                  DANE=./dane.txt WYNIK=./wynik.txt
+
+-> Aby uruchomic program II nalezy wykonac komende:
+       make run4 POTOK=<POTOK> DANE=<DANE> WYNIK=<WYNIK>
+    Pole <POTOK> sluzy do przekazania nazwy potoku, ktory zostanie utworzony.
+    Pole <DANE> sluzy do przekazania nazwy (sciezki) pliku, z ktorego beda pobierane
+    dane.
+    Pole <WYNIK> sluzy do przekazania nazwy (sciezki) pliku, do ktorego beda 
+    zapisywane dane.
+    np. make run4 POTOK=./potokB DANE=./dane.txt WYNIK=./wynik.txt
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r.
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+========================================================================

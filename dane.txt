@@ -1,0 +1,1 @@
+Przy pomocy potokow nienazwanych systemu UNIX zaimplementowac problem ,,Producenta i konsumenta. Dla zademonstrowania, ze nie dosz lo do utraty ani zwielokrotnienia towaru, niech Producent pobiera surowiec (np. porcje bajtow) z pliku tekstowego i wstawia go jako towar do potoku, a Konsument niech umieszcza pobrany z potoku
