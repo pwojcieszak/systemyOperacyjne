@@ -1,0 +1,53 @@
+========================================================================
+Autor: Piotr Wojcieszak                              Krakow, 09.05.2022
+========================================================================
+
+* Zawartosc:
+============
+
+Katalog programy zawiera jeden program w jezyku C:
+--------------------------------------------------------------------
+
+I.  Przy pomocy semaforow nazwanych standardu POSIX implementuje zadanie
+    wzajemnego wykluczania dla procesow. Czas operacji na wspolnym zasobie 
+    symuluje uzywajac funkcji sleep. Dla demonstracji poprawnosci dzialania
+    programu uzywam odpowiednich komunikatow wypisywanych przez poszczegolne
+    procesy przed, w trakcie i po sekcji krytycznej oraz funkcji podajacej
+    wartosc semafora.
+    Program sklada sie z czterech modulow:
+    1) sem_fun.c, se_fun.h  - biblioteki funkcji oblsugujacych semafory,
+    2) powielacz.c          - glowny program powielajacy procesy,
+    3) implement.c          - program implementujacy wzajemne wykluczanie,
+    4) numer.txt            - plik, w ktorym zapisywana jest modyfikowana 
+                              przez procesy liczba.
+------------------------------------------------------------------------
+
+* Jak uruchomic program:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> Aby uruchomic program I nalezy wykonac komende:
+       make run2 NAZWA=<NAZWA> PROGRAM=<PROGRAM> L_PROC=<L_PROC> L_SEK=<L_SEK>
+    Pole <NAZWA> sluzy do przekazania nazwy semaforu.
+    Pole <PROGRAM> sluzy do przekazania nazwy (sciezki) programu implementujacego 
+    wzajemne wykluczanie.
+    Pole <L_PROC> sluzy do okreslenia ilosci tworzonych procesow potomnych.
+    Pole <L_SEK> sluzy do okreslenia ilosci sekcji krytycznych w kazdym procesie 
+    potomnym.
+    
+    np. make make run2 NAZWA="SEM" PROGRAM="./implement.c" L_PROC=1 L_SEK=1
+
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r.
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+========================================================================
