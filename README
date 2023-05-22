@@ -1,0 +1,44 @@
+========================================================================
+Autor: Piotr Wojcieszak                              Krakow, 28.05.2022
+========================================================================
+
+* Zawartosc:
+============
+
+Katalog programy zawiera jeden program w jezyku C:
+--------------------------------------------------------------------
+
+I.  Proces klienta wysyla do procesu serwera zadanie wykonania dzialania 
+    arytmetycznego na dwoch liczbach postaci: liczba (operator) liczba.
+    Serwer wykonuje odpowiednie dzia lanie i odsy la wynik do klienta. 
+    Klient odbiera ten wynik i wypisuje go na ekranie. Poslugujac sie 
+    mechanizmem kolejek komunikatow standardu POSIX zaimplementowac 
+    powyzsze zadanie typu klient-serwer z mozliwoscia obslugi przez 
+    serwera wielu klientow naraz.
+    Program sklada sie z trzech modulow:
+    1) kolejki.c, kolejki.h  - biblioteka funkcji oblsugujacych kolejki,
+    2) serwer.c          - program serwera,
+    3) klient.c          - program klienta.
+------------------------------------------------------------------------
+
+* Jak uruchomic program:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> Aby uruchomic program I nalezy wykonac komende:
+       make run0
+
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r.
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+========================================================================
