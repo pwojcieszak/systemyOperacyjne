@@ -1,0 +1,43 @@
+========================================================================
+Autor: Piotr Wojcieszak                              Krakow, 04.04.2022
+========================================================================
+
+* Zawartosc:
+============
+
+Katalog programy zawiera jeden program w jezyku C:
+--------------------------------------------------------------------
+
+I.  Program malymi porcjami przesyla dane do potoku i wypisuje na ekranie
+    przesylane dane producenta i konsumenta.
+    Program sklada sie z trzech modulow: 
+    1) a.c           - program glowny,
+    2) dane.txt      - przykladowy plik zawierajacy dane dla programu,
+    3) wynik.txt     - przykladowy plik odbierajacy dane od programu.     
+
+------------------------------------------------------------------------
+
+* Jak uruchomic programy:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> Aby uruchomic program, nalezy wykonac komende:
+       make run1 <dane> <wynik>
+    Pole <dane> sluzy do przekazania nazwy pliku, z ktorego beda pobierane
+    dane.
+    Pole <wynik> sluzy do przekazania nazwy pliku, do ktorego beda 
+    zapisywane dane.
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r.
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+========================================================================
