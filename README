@@ -1,0 +1,70 @@
+========================================================================
+Autor: Piotr Wojcieszak                              Krakow, 28.03.2022
+========================================================================
+
+* Zawartosc:
+============
+
+Katalog programy zawiera trzy programy w jezyku C:
+--------------------------------------------------------------------
+
+I.  Program ustawia obsluge sygnalu na 3 sposoby zgodnie z opcja podana
+    jako argument wywolania programu, a nastepnie czeka na sygnal.
+    Program sklada sie z jednego modulu: 
+    1) a.c           - program glowny.     
+
+II. Dwa programy - pierwszy w procesie potomnym uruchamia program z 
+    podpunktu (a), po czym z procesu macierzystego wysyla do niego sygnal.
+    Program sklada sie z dwoch modulow: 
+    1) b.c           - program glowny, 
+    2) a.c           - program do obslugi sygnalow.
+
+III. Trzy programy - pierwszy tworzy jeden proces potomny i uruchamia w 
+    nim program, ktory ustawia ignorowanie sygnalu, staje sie liderem 
+    swojej grupy procesow, a nastepnie tworzy kilka procesow potomnych,
+    ktore uruchamiaja program z podpunktu (a); pierwszy proces macierzysty,
+    po krotkim czasie uspienia wysyla sygnal do calej grupy procesow;
+    procesy macierzyste po utworzeniu wszystkich swoich procesów potomnych
+    na nie czekaja.
+    Program sklada sie z trzech modulow: 
+    1) c.c           - program glowny, 
+    2) a.c           - program do obslugi sygnalow,
+    3) dodatkowy.c   - program wywolywany przez pierwszy proces potomny; 
+                       ignoruje sygnal i tworzy swoje potomne.
+
+------------------------------------------------------------------------
+
+* Jak uruchomic programy:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> Aby uruchomic programy, nalezy wykonac komende:
+       make run1 <obsluga> <nr_sygnalu>
+    Pole <obsluga> definiuje sposob w jakie obsluzony bedzie sygnal. Do wyboru
+    sa trzy opcje:
+    'd' - domyslna obsluga sygnalu,
+    'i' - ignorowanie sygnalu,
+    'w' - wlasna obsluga sygnalu.
+
+    Pole  <nr_sygnalu> sluzy do wprowadzenia numeru sygnalu, ktory chcemy
+    obsluzyc. Liste sygnalow z ich numerami mozna sprawdzic poleceniem kill -l.
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r.
+
+Reszte programow uruchamiamy analogicznie zmieniajac 'run1' na 'runx' gdzie
+x to numer programu, ktory chcemy uruchomic.
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+========================================================================
+
+
+
