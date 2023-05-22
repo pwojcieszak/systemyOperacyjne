@@ -1,0 +1,1 @@
+Przy pomocy potokow nienazwanych systemu UNIX zaimplementowac problem ,,Producenta i konsumenta. Dla zademonstrowania, ze nie dosz lo do utraty ani zwielokrotnienia towaru.

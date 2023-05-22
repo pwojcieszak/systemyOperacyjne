@@ -1,0 +1,51 @@
+========================================================================
+Autor: Piotr Wojcieszak                              Krakow, 25.05.2022
+========================================================================
+
+* Zawartosc:
+============
+
+Katalog programy zawiera jeden program w jezyku C:
+--------------------------------------------------------------------
+
+I.  Przy pomocy semafor ́ow nazwanych standardu POSIX zaimplementowac
+    zadanie wzajemnego wykluczania dla proces ́ow podane w 
+    pseudokodzie na ko ́ncu podrozdzialu 5.1. Czas operacji 
+    nawspolnym zasobie symulowa ́c u ̇zywaj ,ac np. funkcji sleep. 
+    Dla demonstracji poprawno ́sci dzia lania programu u ̇zy ́c 
+    odpowiednich komunikat ́ow wypisywanych przez poszczeg ́olne 
+    procesy przed, w trakcie i po sekcji krytycznej oraz funkcji
+    podaj ,acej warto ́s ́c semafora. Pami ,eta ́c o zainicjowaniu 
+    semafora odpowiedni ,a warto ́sci ,a zaraz po jego utworzeniu.
+    Program sklada sie z trzech modulow:
+    1) sem_fun.c, se_fun.h  - biblioteki funkcji oblsugujacych semafory,
+    2) dzielona.c, dzielona.h  - biblioteki pamieci dzielonej,
+    3) a.c                  - program glowny,
+    4) dane.txt, wynik.txt  - pliki, z danymi wejsciowymi i wyjsciowymi,
+    5) konsument.c, producent.c - programy konsumenta i producenta.
+------------------------------------------------------------------------
+
+* Jak uruchomic program:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> Aby uruchomic program I nalezy wykonac komende:
+       make run1
+       lub make run1s
+       lub makre run1s1
+       lub make run1d2
+
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r.
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+========================================================================
