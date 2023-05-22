@@ -1,0 +1,78 @@
+========================================================================
+Autor: Piotr Wojcieszak,                              Krakow, 14.03.2022
+========================================================================
+
+* Zawartosc:
+============
+
+Katalog programy zawiera piec programow w jezyku C:
+--------------------------------------------------------------------
+
+I.  Program wypisujacy identyfikatory UID, GID, PID, PPID i PGID dla 
+    danego procesu
+    Program sklada sie z dwoch modulow: 
+    1) a.c           - program glowny, 
+    2) funkcja.h     - przykladowa funkcja.     
+
+II. Program Wywolujacy funkcje fork trzy razy (W petli for) i wypisuje 
+    powyższe identyfikatory dla procesu macierzystego oraz wszystkich 
+    procesów  potomnych. Przy pomocy funkcji wait sprawia, aby proces 
+    macierzysty zaczekal na zakończenie wszystkich procesów potomnych.
+    Program sklada sie z dwoch modulow: 
+    1) b.c           - program glowny, 
+    2) funkcja.h     - przykladowa funkcja.
+
+III. Program dziala jak w (b), tylko przy użyciu funkcji sleep sprawia
+by procesy potomne byly adoptowane przez proces systemd.
+    Program sklada sie z trzech modulow: 
+    1) c.c           - program glowny, 
+    2) funkcja.h     - przykladowa funkcja,
+    3) c.txt         - skopiowane z konsoli drzewo procesow sluzace do 
+                       identyfikacji procesu adoptujaccego.
+
+IV. Program dziala jak w (b), tylko wstawia funkcje sleep w takich 
+    miejscach programu, aby procesy pojawialy sie, na ekranie grupowane 
+    pokoleniami od najstarszego do najmlodszego, a proces macierzysty 
+    kończyl sie, dopiero po procesach potomnych.
+    Program sklada sie z trzech modulow: 
+    1) d.c           - program glowny, 
+    2) funkcja.h     - przykladowa funkcja,
+    3) drzewo.txt    - drzewo genealogiczne procesow.
+
+V. Program dziala jak w (b), tylko przy użyciu fukcji setpgid sprawia
+    by każdy proces potomny stawal sie, liderem swojej wlasnej grupy 
+    procesów. 
+    Program sklada sie z trzech modulow: 
+    1) e.c           - program glowny, 
+    2) funkcja.h     - przykladowa funkcja,
+    3) e.txt   - odpowiedz na pytanie z pdf.
+
+------------------------------------------------------------------------
+
+* Jak uruchomic programy:
+=========================
+
+Katalog zawiera program Makefile do kompilacji, linkowania
+i uruchamiania powyzszych programow, a takze czyszczenia katalogu 
+i jego archiwizacji.
+
+-> Aby uruchomic 1-szy program, nalezy wykonac komende:
+       make run1
+
+---> Dla pewnosci, ze wykonywane sa polecenia zdefiniowane w Makefile,
+     a nie wbudowane polecenia make'a, uzyc opcji -r, tzn.
+       make -r run1
+
+Reszte programow uruchamiamy analogicznie zmieniajac 'run1' na 'runx' gdzie
+x to numer programu, ktory chcemy uruchomic.
+
+-> Aby wyczyscic zawartosc katalogu (usunac zbedne pliki), nalezy wykonac:
+       make clean
+
+-> W celu archiwizacji oraz kompresji katalogu nalezy wykonac:
+       make tar
+
+========================================================================
+
+
+

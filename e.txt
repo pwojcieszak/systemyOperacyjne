@@ -1,0 +1,3 @@
+-Ile procesów powstanie przy n-krotnym wywolaniu funkcji fork i dlaczego?
+-Powstanie 2^n-1 procesow, poniewaz funkcja fork tworzy dwa procesy (rodzica i dziecko1). Dziecko wykonuje dzialanie programu od momentu, w ktorym byl proces maccierzysty, ktory go stworzyl.
+ Czyli jesli powstal w 2 przejsciu petli to bedzie on wykonywal instrukcje jakby byl po drugim przejsciu petli (od 3-ego przejscia).
